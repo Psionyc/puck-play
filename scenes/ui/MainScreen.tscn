@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://c68vgtisp8c86"]
+
+[ext_resource type="Texture2D" uid="uid://dvq4rf51p3mmm" path="res://assets/sprites/ui/background.png" id="1_luphb"]
+[ext_resource type="Texture2D" uid="uid://7ul82jash8sn" path="res://assets/sprites/ui/Group 3.png" id="2_vge4c"]
+[ext_resource type="Texture2D" uid="uid://dijb0at2pkcb3" path="res://assets/sprites/ui/landing.png" id="4_2x2rd"]
+[ext_resource type="Texture2D" uid="uid://b885d11q5aoq6" path="res://assets/sprites/ui/ui_selector_bg.png" id="5_vge4c"]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_luphb")
+metadata/_edit_group_ = true
+
+[node name="Group3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vge4c")
+metadata/_edit_group_ = true
+
+[node name="Brand" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -201.0
+offset_right = 201.0
+offset_bottom = 429.0
+grow_horizontal = 2
+texture = ExtResource("4_2x2rd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UiSelectorBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.5
+offset_top = -40.0
+offset_right = 163.5
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vge4c")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d08mxvg3s64bb"]
+
+[ext_resource type="PackedScene" uid="uid://bjfhfdoi1geqb" path="res://scenes/game/Puck.tscn" id="1_w4dr7"]
+[ext_resource type="PackedScene" uid="uid://f3tvm4c3r54" path="res://scenes/game/Paddle.tscn" id="2_37psu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m30ij"]
+size = Vector2(443, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72806"]
+size = Vector2(135, 879)
+
+[node name="PuckTest" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D"]
+position = Vector2(210.5, 906.5)
+shape = SubResource("RectangleShape2D_m30ij")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D2"]
+position = Vector2(-65.5, 433.5)
+shape = SubResource("RectangleShape2D_72806")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D3"]
+position = Vector2(470, 434)
+shape = SubResource("RectangleShape2D_72806")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D4"]
+position = Vector2(193, -29)
+shape = SubResource("RectangleShape2D_m30ij")
+
+[node name="Puck" parent="CanvasLayer" instance=ExtResource("1_w4dr7")]
+position = Vector2(167, 143)
+
+[node name="Paddle" parent="CanvasLayer" instance=ExtResource("2_37psu")]
+position = Vector2(124, 814)
