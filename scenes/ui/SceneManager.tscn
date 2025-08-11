@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1p3x3d7vvgjy"]
+
+[ext_resource type="Script" uid="uid://bw64b2xabc4ma" path="res://scenes/ui/scene_manager.gd" id="1_hu4x8"]
+[ext_resource type="AudioStream" uid="uid://bk16fwsomk6im" path="res://assets/music/tower-defense-8-bit-chiptune-game-music-358521.mp3" id="2_m1f3x"]
+[ext_resource type="PackedScene" uid="uid://c68vgtisp8c86" path="res://scenes/ui/MainScreen.tscn" id="3_wwhau"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_hu4x8")
+
+[node name="NeverDelete" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NeverDelete"]
+stream = ExtResource("2_m1f3x")
+autoplay = true
+parameters/looping = false
+
+[node name="MainScreen" parent="NeverDelete" instance=ExtResource("3_wwhau")]

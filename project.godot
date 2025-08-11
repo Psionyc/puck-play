@@ -11,25 +11,43 @@ config_version=5
 [application]
 
 config/name="Puck Play"
-run/main_scene="uid://c68vgtisp8c86"
+run/main_scene="uid://c1p3x3d7vvgjy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/image="uid://dvta2of3mmufk"
-config/icon="uid://12jv7tk3ujgr"
+boot_splash/bg_color=Color(0.160784, 0.639216, 0.94902, 1)
+boot_splash/image="uid://dyhlbrwo0tb87"
+config/icon="uid://c7stacdexf4cw"
+
+[autoload]
+
+GameManager="*res://scenes/game/GameManager.gd"
 
 [display]
 
 window/size/viewport_width=402
 window/size/viewport_height=874
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[global_group]
+
+Player=""
+Wall=""
 
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=0
+textures/light_projectors/filter=0

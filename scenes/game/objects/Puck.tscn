@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjfhfdoi1geqb"]
+
+[ext_resource type="Texture2D" uid="uid://d0b8sqrxtbon" path="res://assets/sprites/game/puck.svg" id="1_in0c7"]
+[ext_resource type="Script" uid="uid://dt7jrpgdnjwky" path="res://scenes/game/objects/puck.gd" id="1_w5tui"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_in0c7"]
+friction = 0.1
+rough = true
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_in0c7"]
+radius = 23.0217
+
+[node name="Puck" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_in0c7")
+gravity_scale = 0.0
+lock_rotation = true
+custom_integrator = true
+continuous_cd = 2
+script = ExtResource("1_w5tui")
+trail_color = Color(0.984314, 0.839216, 0.2, 1)
+lifetime = 0.1
+max_points = 10
+width_min = 40
+width_max = 50
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 54.0
+default_color = Color(1, 0.847059, 0.176471, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_in0c7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_in0c7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

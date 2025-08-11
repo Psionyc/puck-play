@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://blxf24st4fad5"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bprm75axxw5dr" path="res://assets/resources/physics/static_boundary_material.tres" id="1_q4hnj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64rdd"]
+size = Vector2(311, 1144.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkx62"]
+size = Vector2(357, 194.25)
+
+[node name="Collisions" type="Node2D"]
+visible = false
+position = Vector2(-202, -430)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["Wall"]]
+position = Vector2(194, 351)
+physics_material_override = ExtResource("1_q4hnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-330.5, 136.625)
+shape = SubResource("RectangleShape2D_64rdd")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["Wall"]]
+position = Vector2(209, 337)
+physics_material_override = ExtResource("1_q4hnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(325, 128)
+shape = SubResource("RectangleShape2D_64rdd")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["Wall"]]
+position = Vector2(201, 431)
+physics_material_override = ExtResource("1_q4hnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-2, 461.875)
+shape = SubResource("RectangleShape2D_vkx62")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." groups=["Wall"]]
+position = Vector2(201, 431)
+physics_material_override = ExtResource("1_q4hnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2(-2, -465)
+shape = SubResource("RectangleShape2D_vkx62")

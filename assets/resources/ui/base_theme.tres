@@ -1,0 +1,67 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://q2hsbfl7lery"]
+
+[ext_resource type="FontFile" uid="uid://rp3ieg6kbo7d" path="res://assets/resources/ui/Cocogoose Pro Regular Trial.ttf" id="1_1wyd7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wyd7"]
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.15328, 0.304663, 0.48882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trfhs"]
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 0.847059, 0.172549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qa4f"]
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 0.847059, 0.172549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wple"]
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0.282353, 0.615686, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytpqb"]
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 0.847059, 0.172549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[resource]
+default_font = ExtResource("1_1wyd7")
+default_font_size = 20
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 0.498039)
+Button/colors/font_pressed_color = Color(0, 0.282353, 0.615686, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_1wyd7")
+Button/styles/focus = SubResource("StyleBoxFlat_trfhs")
+Button/styles/hover = SubResource("StyleBoxFlat_7qa4f")
+Button/styles/normal = SubResource("StyleBoxFlat_5wple")
+Button/styles/pressed = SubResource("StyleBoxFlat_ytpqb")
+Label/colors/font_color = Color(0.00784314, 0.243137, 0.466667, 1)
+MarginContainer/constants/margin_bottom = 53
+MarginContainer/constants/margin_left = 45
+MarginContainer/constants/margin_right = 45
+MarginContainer/constants/margin_top = 53
+VBoxContainer/constants/separation = 27

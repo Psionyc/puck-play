@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2vt8marx0mik"]
+
+[ext_resource type="Texture2D" uid="uid://dvq4rf51p3mmm" path="res://assets/sprites/ui/background.png" id="1_imvxc"]
+[ext_resource type="Theme" uid="uid://q2hsbfl7lery" path="res://assets/resources/ui/base_theme.tres" id="1_klrsa"]
+[ext_resource type="Script" uid="uid://ddctbkb2w8wky" path="res://scenes/ui/play_with_ai.gd" id="2_kd02j"]
+[ext_resource type="Texture2D" uid="uid://dbsni6v0nedga" path="res://assets/sprites/ui/play_with_ai_button.svg" id="2_klrsa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kd02j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PlayWithAI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_klrsa")
+script = ExtResource("2_kd02j")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_imvxc")
+metadata/_edit_group_ = true
+
+[node name="PlayWithAiButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -153.5
+offset_top = 70.0
+offset_right = 153.5
+offset_bottom = 147.0
+grow_horizontal = 2
+texture_normal = ExtResource("2_klrsa")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PlayWithAiButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Select Difficulty"
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(230, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -150.0
+offset_right = 115.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kd02j")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Easy" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "EASY"
+
+[node name="Difficult" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "MEDIUM"
+
+[node name="Hard" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "DIFFICULT"
+
+[connection signal="pressed" from="PlayWithAiButton" to="." method="_on_play_with_ai_button_pressed"]

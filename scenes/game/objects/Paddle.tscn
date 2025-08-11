@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://f3tvm4c3r54"]
+
+[ext_resource type="Texture2D" uid="uid://12jv7tk3ujgr" path="res://assets/sprites/game/paddle.svg" id="1_lcncr"]
+[ext_resource type="Script" uid="uid://y4iaxbtpk4ej" path="res://scenes/game/objects/paddle.gd" id="1_mu5x7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mu5x7"]
+friction = 0.1
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3cx0"]
+radius = 44.911
+
+[node name="Paddle" type="RigidBody2D"]
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_mu5x7")
+gravity_scale = 0.0
+lock_rotation = true
+custom_integrator = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_mu5x7")
+
+[node name="Paddle" type="Sprite2D" parent="."]
+modulate = Color(0.85098, 0.392157, 0, 1)
+position = Vector2(0, 5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_lcncr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o3cx0")

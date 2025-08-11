@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://d08mxvg3s64bb"]
+
+[ext_resource type="Script" uid="uid://3tn4noahiwfj" path="res://scenes/game/screens/ai_game.gd" id="1_mqscr"]
+[ext_resource type="Texture2D" uid="uid://dvq4rf51p3mmm" path="res://assets/sprites/ui/background.png" id="2_5hpkk"]
+[ext_resource type="Texture2D" uid="uid://dnjdtcpwnof02" path="res://assets/sprites/game/table.svg" id="3_ojsdj"]
+[ext_resource type="Texture2D" uid="uid://c14jxxhuout2r" path="res://assets/sprites/game/goals.png" id="4_se5g5"]
+[ext_resource type="PackedScene" uid="uid://f3tvm4c3r54" path="res://scenes/game/objects/Paddle.tscn" id="5_bfi1y"]
+[ext_resource type="PackedScene" uid="uid://bjfhfdoi1geqb" path="res://scenes/game/objects/Puck.tscn" id="6_3g3rs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhpnr"]
+size = Vector2(130, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfio7"]
+size = Vector2(121, 47)
+
+[node name="AIGame" type="Node"]
+script = ExtResource("1_mqscr")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5hpkk")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+follow_viewport_enabled = true
+
+[node name="Game" type="Node" parent="."]
+
+[node name="Table" type="Sprite2D" parent="Game"]
+position = Vector2(201, 431)
+texture = ExtResource("3_ojsdj")
+metadata/_edit_group_ = true
+
+[node name="GoalMarkers" type="Sprite2D" parent="Game/Table"]
+texture = ExtResource("4_se5g5")
+
+[node name="AIGoal" type="Area2D" parent="Game/Table"]
+position = Vector2(-2, -364)
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/AIGoal"]
+position = Vector2(3, 21)
+shape = SubResource("RectangleShape2D_fhpnr")
+
+[node name="AIPadddle" parent="Game/Table/AIGoal" node_paths=PackedStringArray("table", "center_marker", "ai_goal", "player_goal", "puck") instance=ExtResource("5_bfi1y")]
+position = Vector2(0, 74)
+controllable = false
+table = NodePath("../..")
+center_marker = NodePath("../../CenterMarker")
+ai_goal = NodePath("..")
+player_goal = NodePath("../../PlayerGoal")
+difficulty = 0
+puck = NodePath("../../CenterMarker/Puck")
+
+[node name="PlayerGoal" type="Area2D" parent="Game/Table"]
+position = Vector2(-3, 365)
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/PlayerGoal"]
+position = Vector2(1.5, -15.5)
+shape = SubResource("RectangleShape2D_cfio7")
+
+[node name="PlayerPaddle" parent="Game/Table/PlayerGoal" instance=ExtResource("5_bfi1y")]
+position = Vector2(0, -74)
+
+[node name="CenterMarker" type="Marker2D" parent="Game/Table"]
+position = Vector2(-1, -2)
+
+[node name="Puck" parent="Game/Table/CenterMarker" instance=ExtResource("6_3g3rs")]
+mass = 0.2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Game/Table"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Table/StaticBody2D"]
+polygon = PackedVector2Array(160, -367, 185, -357, 175, -383, -275, -384, -274, -203, -284, 381, -157, 435, 136, 424, 224, 439, 289, 370, 308, -31, 314, -353, 177, -357, 177, 337, 161, 359, -163, 361, -180, 333, -174, -348, -153, -363)

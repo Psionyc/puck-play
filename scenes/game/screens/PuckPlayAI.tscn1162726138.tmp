@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://d08mxvg3s64bb"]
+
+[ext_resource type="Script" uid="uid://3tn4noahiwfj" path="res://scenes/game/screens/PuckPlayAI.gd" id="1_5habc"]
+[ext_resource type="Texture2D" uid="uid://dnjdtcpwnof02" path="res://assets/sprites/game/table.svg" id="2_413xc"]
+[ext_resource type="Texture2D" uid="uid://dvq4rf51p3mmm" path="res://assets/sprites/ui/background.png" id="2_f85l8"]
+[ext_resource type="PackedScene" uid="uid://bjfhfdoi1geqb" path="res://scenes/game/objects/Puck.tscn" id="3_413xc"]
+[ext_resource type="PhysicsMaterial" uid="uid://bprm75axxw5dr" path="res://assets/resources/physics/static_boundary_material.tres" id="4_3coh0"]
+[ext_resource type="PackedScene" uid="uid://f3tvm4c3r54" path="res://scenes/game/objects/Paddle.tscn" id="4_w03o3"]
+[ext_resource type="Texture2D" uid="uid://c14jxxhuout2r" path="res://assets/sprites/game/goals.png" id="5_fhpnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhpnr"]
+size = Vector2(130, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfio7"]
+size = Vector2(121, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f85l8"]
+size = Vector2(311, 1144.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3coh0"]
+size = Vector2(357, 194.25)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_5habc")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f85l8")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+follow_viewport_enabled = true
+
+[node name="Game" type="Node" parent="."]
+
+[node name="Table" type="Sprite2D" parent="Game"]
+position = Vector2(201, 431)
+texture = ExtResource("2_413xc")
+metadata/_edit_group_ = true
+
+[node name="GoalMarkers" type="Sprite2D" parent="Game/Table"]
+texture = ExtResource("5_fhpnr")
+
+[node name="AIGoal" type="Area2D" parent="Game/Table"]
+position = Vector2(-2, -364)
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/AIGoal"]
+position = Vector2(3, 21)
+shape = SubResource("RectangleShape2D_fhpnr")
+
+[node name="AIPadddle" parent="Game/Table/AIGoal" node_paths=PackedStringArray("center_marker", "ai_goal", "player_goal", "puck") instance=ExtResource("4_w03o3")]
+position = Vector2(0, 74)
+controllable = false
+center_marker = NodePath("../../CenterMarker")
+ai_goal = NodePath("..")
+player_goal = NodePath("../../PlayerGoal")
+difficulty = 0
+puck = NodePath("../../CenterMarker/Puck")
+
+[node name="PlayerGoal" type="Area2D" parent="Game/Table"]
+position = Vector2(-3, 365)
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/PlayerGoal"]
+position = Vector2(1.5, -15.5)
+shape = SubResource("RectangleShape2D_cfio7")
+
+[node name="PlayerPaddle" parent="Game/Table/PlayerGoal" instance=ExtResource("4_w03o3")]
+position = Vector2(0, -74)
+
+[node name="Collisions" type="Node" parent="Game/Table"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Game/Table/Collisions" groups=["Wall"]]
+position = Vector2(194, 351)
+physics_material_override = ExtResource("4_3coh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/Collisions/StaticBody2D2"]
+position = Vector2(-330.5, 136.625)
+shape = SubResource("RectangleShape2D_f85l8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Game/Table/Collisions" groups=["Wall"]]
+position = Vector2(209, 337)
+physics_material_override = ExtResource("4_3coh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/Collisions/StaticBody2D3"]
+position = Vector2(325, 128)
+shape = SubResource("RectangleShape2D_f85l8")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Game/Table/Collisions" groups=["Wall"]]
+position = Vector2(201, 431)
+physics_material_override = ExtResource("4_3coh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/Collisions/StaticBody2D4"]
+position = Vector2(-2, 461.875)
+shape = SubResource("RectangleShape2D_3coh0")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Game/Table/Collisions" groups=["Wall"]]
+position = Vector2(201, 431)
+physics_material_override = ExtResource("4_3coh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Table/Collisions/StaticBody2D5"]
+position = Vector2(-2, -465)
+shape = SubResource("RectangleShape2D_3coh0")
+
+[node name="CenterMarker" type="Marker2D" parent="Game/Table"]
+position = Vector2(-1, -2)
+
+[node name="Puck" parent="Game/Table/CenterMarker" instance=ExtResource("3_413xc")]
+mass = 0.2
